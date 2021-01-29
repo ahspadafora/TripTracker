@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		BA0AE09825C4CB1600FBE2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */; };
 		BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */; };
-		BA0AE09C25C4CB1600FBE2EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09B25C4CB1600FBE2EC /* ViewController.swift */; };
+		BA0AE09C25C4CB1600FBE2EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09B25C4CB1600FBE2EC /* HomeViewController.swift */; };
 		BA0AE09F25C4CB1700FBE2EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */; };
 		BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */; };
 		BA0AE0A425C4CB1B00FBE2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */; };
 		BA0AE0A725C4CB1B00FBE2EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE0A525C4CB1B00FBE2EC /* LaunchScreen.storyboard */; };
+		BA0AE0AF25C4CEE000FBE2EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0AE25C4CEE000FBE2EC /* SettingsViewController.swift */; };
+		BA0AE0B125C4CEEA00FBE2EC /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */; };
+		BA0AE0B325C4CF0B00FBE2EC /* PastTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B225C4CF0B00FBE2EC /* PastTripsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA0AE09425C4CB1600FBE2EC /* TripTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA0AE09B25C4CB1600FBE2EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA0AE09B25C4CB1600FBE2EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA0AE09E25C4CB1700FBE2EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA0AE0A125C4CB1700FBE2EC /* TripTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TripTracker.xcdatamodel; sourceTree = "<group>"; };
 		BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA0AE0A625C4CB1B00FBE2EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA0AE0A825C4CB1B00FBE2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA0AE0AE25C4CEE000FBE2EC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
+		BA0AE0B225C4CF0B00FBE2EC /* PastTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +66,11 @@
 			children = (
 				BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */,
 				BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */,
-				BA0AE09B25C4CB1600FBE2EC /* ViewController.swift */,
+				BA0AE09B25C4CB1600FBE2EC /* HomeViewController.swift */,
+				BA0AE0AE25C4CEE000FBE2EC /* SettingsViewController.swift */,
+				BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */,
 				BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */,
+				BA0AE0B225C4CF0B00FBE2EC /* PastTripsViewController.swift */,
 				BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */,
 				BA0AE0A525C4CB1B00FBE2EC /* LaunchScreen.storyboard */,
 				BA0AE0A825C4CB1B00FBE2EC /* Info.plist */,
@@ -141,10 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0AE09C25C4CB1600FBE2EC /* ViewController.swift in Sources */,
+				BA0AE09C25C4CB1600FBE2EC /* HomeViewController.swift in Sources */,
 				BA0AE09825C4CB1600FBE2EC /* AppDelegate.swift in Sources */,
 				BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */,
+				BA0AE0B325C4CF0B00FBE2EC /* PastTripsViewController.swift in Sources */,
+				BA0AE0AF25C4CEE000FBE2EC /* SettingsViewController.swift in Sources */,
 				BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */,
+				BA0AE0B125C4CEEA00FBE2EC /* AddTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
