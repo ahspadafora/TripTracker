@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TO DO: Add LocationManagerDelegate
+
+
 class AddTripViewController: UIViewController {
 
     override func viewDidLoad() {

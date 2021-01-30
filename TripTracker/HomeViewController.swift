@@ -8,6 +8,8 @@
 
 import UIKit
 
+// To DO: Implement table view that shows past trips
+
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
