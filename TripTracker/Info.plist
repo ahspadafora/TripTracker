@@ -14,6 +14,10 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>TripTracker would like to access your location in order to display your trip data</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>TripTracker would like to access your location in order to display your trip data</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -45,6 +49,8 @@
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
+		<string>location-services</string>
+		<string>gps</string>
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
