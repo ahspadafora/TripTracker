@@ -12,7 +12,9 @@ import UIKit
 
 
 class AddTripViewController: UIViewController {
-
+    
+    var tripService: TripService?
+    let coreDataStack = CoreDataStack()
     
     @IBOutlet weak var startStopButton: UIButton!
     
@@ -46,8 +48,11 @@ class AddTripViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tripService = TripService(coreDataStack: self.coreDataStack, managedObjectContext: coreDataStack.mainContext)
     }
     
     @IBAction func startStopButtonTapped(_ sender: UIButton) {
@@ -73,10 +78,11 @@ class AddTripViewController: UIViewController {
         self.currentSpeed = "\(trip.getFirstPoint()!.speed)"
     }
     fileprivate func handleEndTripCallback(trip: TripTracker) {
-        
+            // TO DO
     }
     
     func startTrip(locationManager: LocationProvider = LocationManager.shared) {
+        
         locationManager.startTrip(startCompletion: handleStartTripCallback(trip:), speedUpdateCompletion: handleSpeedCallback(trip:), errorCompletion: { (trip, error) in
             print(error.localizedDescription)
             // present notification letting user know they need to check their location settings
@@ -85,10 +91,15 @@ class AddTripViewController: UIViewController {
     }
     
     func endTrip(locationManager: LocationProvider = LocationManager.shared) {
-        locationManager.endTrip { (_) in
-           self.timeStarted = nil
-           self.currentSpeed = nil
+        locationManager.endTrip { (tripTracker) in
+            
+            self.timeStarted = nil
+            self.currentSpeed = nil
+            
+            self.tripService?.addTrip(tripTracker: tripTracker)
+            let newTripCount = self.tripService?.getTrips()
+            print("newTripCount = \(newTripCount)")
         }
     }
-
+    
 }

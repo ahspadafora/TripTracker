@@ -120,10 +120,8 @@ class LocationManager: NSObject, LocationProvider {
     // ends location updating
     func endTrip(completion: @escaping TripEndedCompletionBlock) {
         coreLocationManager.stopUpdatingLocation()
-
-        self.tripTracker.clearData()
-        
         completion(self.tripTracker)
+        self.tripTracker.clearData()
     }
     
     

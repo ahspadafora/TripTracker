@@ -20,6 +20,10 @@
 		BA0AE0C925C5EBA900FBE2EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */; };
 		BA0AE0CA25C5EBAD00FBE2EC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */; };
 		BA0AE0CC25C5EBB200FBE2EC /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */; };
+		BA170D7525C6917100619AEB /* TripTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */; };
+		BA170D7725C72C1700619AEB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7625C72C1700619AEB /* CoreDataStack.swift */; };
+		BA170D7925C72DD300619AEB /* TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7825C72DD300619AEB /* TripService.swift */; };
+		BA170D7B25C7388800619AEB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7A25C7388800619AEB /* RootViewController.swift */; };
 		BADD987125C5F09200E9A8FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */; };
 		BADD987625C6105200E9A8FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */; };
 		BADD987825C6128600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
@@ -54,6 +58,9 @@
 		BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BA0AE0BE25C5E3C800FBE2EC /* TripTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0AE0C225C5E3C800FBE2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA170D7625C72C1700619AEB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		BA170D7825C72DD300619AEB /* TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripService.swift; sourceTree = "<group>"; };
+		BA170D7A25C7388800619AEB /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripTableViewCell.swift; sourceTree = "<group>"; };
 		BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 		BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewControllerTest.swift; sourceTree = "<group>"; };
@@ -101,16 +108,12 @@
 			children = (
 				BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */,
 				BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */,
-				BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */,
-				BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */,
-				BADD987E25C65F8F00E9A8FD /* TripTracker.swift */,
-				BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */,
-				BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */,
-				BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */,
-				BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */,
-				BA0AE0A525C4CB1B00FBE2EC /* LaunchScreen.storyboard */,
-				BA0AE0A825C4CB1B00FBE2EC /* Info.plist */,
-				BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */,
+				BADD988225C6785600E9A8FD /* ViewControllers */,
+				BADD988325C6787700E9A8FD /* Managers */,
+				BADD988125C6784A00E9A8FD /* Models */,
+				BADD988425C6788400E9A8FD /* Views */,
+				BADD988525C6788A00E9A8FD /* InfoPlist */,
+				BADD988625C6789400E9A8FD /* CoreDataModel */,
 			);
 			path = TripTracker;
 			sourceTree = "<group>";
@@ -123,6 +126,61 @@
 				BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */,
 			);
 			path = TripTrackerTests;
+			sourceTree = "<group>";
+		};
+		BADD988125C6784A00E9A8FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BADD987E25C65F8F00E9A8FD /* TripTracker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BADD988225C6785600E9A8FD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */,
+				BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */,
+				BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */,
+				BA170D7A25C7388800619AEB /* RootViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BADD988325C6787700E9A8FD /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */,
+				BA170D7625C72C1700619AEB /* CoreDataStack.swift */,
+				BA170D7825C72DD300619AEB /* TripService.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BADD988425C6788400E9A8FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */,
+				BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */,
+				BA0AE0A525C4CB1B00FBE2EC /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BADD988525C6788A00E9A8FD /* InfoPlist */ = {
+			isa = PBXGroup;
+			children = (
+				BA0AE0A825C4CB1B00FBE2EC /* Info.plist */,
+			);
+			path = InfoPlist;
+			sourceTree = "<group>";
+		};
+		BADD988625C6789400E9A8FD /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */,
+			);
+			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +288,9 @@
 				BADD987825C6128600E9A8FD /* PastTripTableViewCell.swift in Sources */,
 				BA0AE09C25C4CB1600FBE2EC /* PastTripsViewController.swift in Sources */,
 				BA0AE09825C4CB1600FBE2EC /* AppDelegate.swift in Sources */,
+				BA170D7B25C7388800619AEB /* RootViewController.swift in Sources */,
+				BA170D7725C72C1700619AEB /* CoreDataStack.swift in Sources */,
+				BA170D7925C72DD300619AEB /* TripService.swift in Sources */,
 				BA0AE0B525C5D16B00FBE2EC /* LocationManager.swift in Sources */,
 				BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */,
 				BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */,
@@ -249,6 +310,7 @@
 				BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */,
 				BA0AE0CA25C5EBAD00FBE2EC /* LocationManager.swift in Sources */,
 				BA0AE0C925C5EBA900FBE2EC /* SceneDelegate.swift in Sources */,
+				BA170D7525C6917100619AEB /* TripTracker.xcdatamodeld in Sources */,
 				BA0AE0CC25C5EBB200FBE2EC /* AddTripViewController.swift in Sources */,
 				BADD988025C6612B00E9A8FD /* TripTracker.swift in Sources */,
 			);
@@ -403,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TripTracker/Info.plist;
+				INFOPLIST_FILE = TripTracker/InfoPlist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,7 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TripTracker/Info.plist;
+				INFOPLIST_FILE = TripTracker/InfoPlist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
