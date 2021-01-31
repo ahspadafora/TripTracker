@@ -33,6 +33,9 @@ protocol LocationProvider {
     
     var authStatus: LocationManagerAuthStatus? { get set }
     
+    var tripStartedCompletionBlock: TripStartedCompletionBlock? { get set }
+    var speedUpdateCompletionBlock: SpeedUpdateCompletionBlock? { get set }
+    
 }
 
 enum LocationManagerAuthStatus {
@@ -139,14 +142,13 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         // TODO: Create coredata object from location updates
-        guard let location = locations.first else { return }
         
-        if tripTracker.points.isEmpty {
+        guard let location = locations.first else { return }
+        tripTracker.addPoint(location: Location(CLLocation: location))
+        if tripTracker.points.count == 1 {
             tripTracker.timeStarted = location.timestamp
             self.tripStartedCompletionBlock?(self.tripTracker)
         }
-        
-        tripTracker.addPoint(location: Location(CLLocation: location))
         
         self.speedUpdateCompletionBlock?(self.tripTracker)
     }

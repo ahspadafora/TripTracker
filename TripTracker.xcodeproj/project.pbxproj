@@ -25,6 +25,7 @@
 		BADD987825C6128600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
 		BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */; };
 		BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
+		BADD987D25C641C300E9A8FD /* AddTripViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BA0AE0C225C5E3C800FBE2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripTableViewCell.swift; sourceTree = "<group>"; };
 		BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
+		BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewControllerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			children = (
 				BA0AE0C225C5E3C800FBE2EC /* Info.plist */,
 				BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */,
+				BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */,
 			);
 			path = TripTrackerTests;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */,
+				BADD987D25C641C300E9A8FD /* AddTripViewControllerTest.swift in Sources */,
 				BADD987125C5F09200E9A8FD /* AppDelegate.swift in Sources */,
 				BA0AE0C825C5EB9E00FBE2EC /* PastTripsViewController.swift in Sources */,
 				BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */,

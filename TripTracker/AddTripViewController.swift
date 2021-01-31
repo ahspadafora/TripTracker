@@ -21,12 +21,34 @@ class AddTripViewController: UIViewController {
     
     var tripInProgress = false
     
+    var timeStarted: String? {
+        didSet {
+            DispatchQueue.main.async {
+                // label optional due to AddTripVC testing
+                self.timeStartedLabel?.text = self.timeStarted!
+            }
+        }
+    }
+    var currentSpeed: String? {
+        didSet {
+            DispatchQueue.main.async {
+                // label optional due to AddTripVC testing
+                self.currentSpeedLabel?.text = self.currentSpeed!
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func startStopButtonTapped(_ sender: UIButton) {
-        tripInProgress.toggle()
+        
+        print("tripInProgress is currently \(self.tripInProgress)")
+        self.tripInProgress.toggle()
+        print("tripInProgress is currently \(self.tripInProgress)")
+        
+        
         DispatchQueue.main.async {
             switch self.tripInProgress {
             case true:
@@ -34,27 +56,37 @@ class AddTripViewController: UIViewController {
                 self.startTrip()
             case false:
                 sender.setTitle("Start Trip", for: .normal)
-                self.endTrip()
+                self.endTrip(locationManager: LocationManager.shared)
             }
         }
         
     }
     
-    func startTrip() {
-        LocationManager.shared.startTrip(startCompletion: { (trip) in
-            DispatchQueue.main.async {
-                self.timeStartedLabel.text = "\(trip.points.last!.latitude)"
-            }
-        }) { (trip) in
-            DispatchQueue.main.async {
-                if self.tripInProgress {
-                    self.currentSpeedLabel.text = "\(trip.points.first!.speed)"
-                }
-            }
-        }
+    func handleStartCallback(trip: TripTrackingProvider) {
+        self.timeStarted = "\(trip.points.last!.timestamp)"
     }
     
-    func endTrip() {
+    func startTrip(locationManager: LocationProvider = LocationManager.shared) {
+        
+        locationManager.startTrip(startCompletion: handleStartCallback(trip:)) { (trip) in
+            self.currentSpeed = "\(trip.points.first!.speed)"
+        }
+//        LocationManager.shared.startTrip(startCompletion: { (trip) in
+//            DispatchQueue.main.async {
+//                self.timeStarted = "\(trip.points.last!.timestamp)"
+//            }
+//        }) { (trip) in
+//            DispatchQueue.main.async {
+//                if self.tripInProgress {
+//                    self.currentSpeed = "\(trip.points.first!.speed)"
+//                }
+//            }
+//        }
+        
+    }
+    
+    func endTrip(locationManager: LocationProvider) {
+        
         LocationManager.shared.endTrip { (_) in
             DispatchQueue.main.async {
                 self.timeStartedLabel.text = " "
