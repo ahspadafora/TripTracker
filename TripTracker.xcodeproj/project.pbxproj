@@ -9,33 +9,61 @@
 /* Begin PBXBuildFile section */
 		BA0AE09825C4CB1600FBE2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */; };
 		BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */; };
-		BA0AE09C25C4CB1600FBE2EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09B25C4CB1600FBE2EC /* HomeViewController.swift */; };
+		BA0AE09C25C4CB1600FBE2EC /* PastTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */; };
 		BA0AE09F25C4CB1700FBE2EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */; };
 		BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */; };
 		BA0AE0A425C4CB1B00FBE2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */; };
 		BA0AE0A725C4CB1B00FBE2EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE0A525C4CB1B00FBE2EC /* LaunchScreen.storyboard */; };
-		BA0AE0AF25C4CEE000FBE2EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0AE25C4CEE000FBE2EC /* SettingsViewController.swift */; };
 		BA0AE0B125C4CEEA00FBE2EC /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */; };
-		BA0AE0B325C4CF0B00FBE2EC /* PastTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B225C4CF0B00FBE2EC /* PastTripsViewController.swift */; };
+		BA0AE0B525C5D16B00FBE2EC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */; };
+		BA0AE0C825C5EB9E00FBE2EC /* PastTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */; };
+		BA0AE0C925C5EBA900FBE2EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */; };
+		BA0AE0CA25C5EBAD00FBE2EC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */; };
+		BA0AE0CC25C5EBB200FBE2EC /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */; };
+		BADD987125C5F09200E9A8FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */; };
+		BADD987625C6105200E9A8FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */; };
+		BADD987825C6128600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
+		BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */; };
+		BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA0AE0C325C5E3C800FBE2EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA0AE08C25C4CB1600FBE2EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA0AE09325C4CB1600FBE2EC;
+			remoteInfo = TripTracker;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BA0AE09425C4CB1600FBE2EC /* TripTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA0AE09B25C4CB1600FBE2EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripsViewController.swift; sourceTree = "<group>"; };
 		BA0AE09E25C4CB1700FBE2EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA0AE0A125C4CB1700FBE2EC /* TripTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TripTracker.xcdatamodel; sourceTree = "<group>"; };
 		BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA0AE0A625C4CB1B00FBE2EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA0AE0A825C4CB1B00FBE2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA0AE0AE25C4CEE000FBE2EC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
-		BA0AE0B225C4CF0B00FBE2EC /* PastTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripsViewController.swift; sourceTree = "<group>"; };
+		BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BA0AE0BE25C5E3C800FBE2EC /* TripTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA0AE0C225C5E3C800FBE2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripTableViewCell.swift; sourceTree = "<group>"; };
+		BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BA0AE09125C4CB1600FBE2EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA0AE0BB25C5E3C800FBE2EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0AE09625C4CB1600FBE2EC /* TripTracker */,
+				BA0AE0BF25C5E3C800FBE2EC /* TripTrackerTests */,
 				BA0AE09525C4CB1600FBE2EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0AE09425C4CB1600FBE2EC /* TripTracker.app */,
+				BA0AE0BE25C5E3C800FBE2EC /* TripTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,17 +96,26 @@
 			children = (
 				BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */,
 				BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */,
-				BA0AE09B25C4CB1600FBE2EC /* HomeViewController.swift */,
-				BA0AE0AE25C4CEE000FBE2EC /* SettingsViewController.swift */,
+				BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */,
+				BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */,
 				BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */,
 				BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */,
-				BA0AE0B225C4CF0B00FBE2EC /* PastTripsViewController.swift */,
+				BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */,
 				BA0AE0A325C4CB1B00FBE2EC /* Assets.xcassets */,
 				BA0AE0A525C4CB1B00FBE2EC /* LaunchScreen.storyboard */,
 				BA0AE0A825C4CB1B00FBE2EC /* Info.plist */,
 				BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */,
 			);
 			path = TripTracker;
+			sourceTree = "<group>";
+		};
+		BA0AE0BF25C5E3C800FBE2EC /* TripTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA0AE0C225C5E3C800FBE2EC /* Info.plist */,
+				BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */,
+			);
+			path = TripTrackerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +138,24 @@
 			productReference = BA0AE09425C4CB1600FBE2EC /* TripTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BA0AE0BD25C5E3C800FBE2EC /* TripTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA0AE0C525C5E3C800FBE2EC /* Build configuration list for PBXNativeTarget "TripTrackerTests" */;
+			buildPhases = (
+				BA0AE0BA25C5E3C800FBE2EC /* Sources */,
+				BA0AE0BB25C5E3C800FBE2EC /* Frameworks */,
+				BA0AE0BC25C5E3C800FBE2EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA0AE0C425C5E3C800FBE2EC /* PBXTargetDependency */,
+			);
+			name = TripTrackerTests;
+			productName = TripTrackerTests;
+			productReference = BA0AE0BE25C5E3C800FBE2EC /* TripTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -111,6 +168,10 @@
 				TargetAttributes = {
 					BA0AE09325C4CB1600FBE2EC = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					BA0AE0BD25C5E3C800FBE2EC = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = BA0AE09325C4CB1600FBE2EC;
 					};
 				};
 			};
@@ -128,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				BA0AE09325C4CB1600FBE2EC /* TripTracker */,
+				BA0AE0BD25C5E3C800FBE2EC /* TripTrackerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -143,6 +205,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA0AE0BC25C5E3C800FBE2EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BADD987625C6105200E9A8FD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -150,17 +220,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0AE09C25C4CB1600FBE2EC /* HomeViewController.swift in Sources */,
+				BADD987825C6128600E9A8FD /* PastTripTableViewCell.swift in Sources */,
+				BA0AE09C25C4CB1600FBE2EC /* PastTripsViewController.swift in Sources */,
 				BA0AE09825C4CB1600FBE2EC /* AppDelegate.swift in Sources */,
+				BA0AE0B525C5D16B00FBE2EC /* LocationManager.swift in Sources */,
 				BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */,
-				BA0AE0B325C4CF0B00FBE2EC /* PastTripsViewController.swift in Sources */,
-				BA0AE0AF25C4CEE000FBE2EC /* SettingsViewController.swift in Sources */,
 				BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */,
 				BA0AE0B125C4CEEA00FBE2EC /* AddTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA0AE0BA25C5E3C800FBE2EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */,
+				BADD987125C5F09200E9A8FD /* AppDelegate.swift in Sources */,
+				BA0AE0C825C5EB9E00FBE2EC /* PastTripsViewController.swift in Sources */,
+				BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */,
+				BA0AE0CA25C5EBAD00FBE2EC /* LocationManager.swift in Sources */,
+				BA0AE0C925C5EBA900FBE2EC /* SceneDelegate.swift in Sources */,
+				BA0AE0CC25C5EBB200FBE2EC /* AddTripViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA0AE0C425C5E3C800FBE2EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA0AE09325C4CB1600FBE2EC /* TripTracker */;
+			targetProxy = BA0AE0C325C5E3C800FBE2EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */ = {
@@ -330,6 +422,44 @@
 			};
 			name = Release;
 		};
+		BA0AE0C625C5E3C800FBE2EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TripTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = aspadafora.TripTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TripTracker.app/TripTracker";
+			};
+			name = Debug;
+		};
+		BA0AE0C725C5E3C800FBE2EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TripTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = aspadafora.TripTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TripTracker.app/TripTracker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -347,6 +477,15 @@
 			buildConfigurations = (
 				BA0AE0AC25C4CB1B00FBE2EC /* Debug */,
 				BA0AE0AD25C4CB1B00FBE2EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA0AE0C525C5E3C800FBE2EC /* Build configuration list for PBXNativeTarget "TripTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA0AE0C625C5E3C800FBE2EC /* Debug */,
+				BA0AE0C725C5E3C800FBE2EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
