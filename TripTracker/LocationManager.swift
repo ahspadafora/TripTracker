@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 
-struct Location {
+struct Location: Equatable {
     var latitude: Double
     var longitude: Double
     var timestamp: Date
@@ -26,16 +26,24 @@ extension Location {
     }
 }
 
+typealias TripStartedCompletionBlock = (TripTracker) -> Void
+typealias TripEndedCompletionBlock = (TripTracker) -> Void
+typealias SpeedUpdateCompletionBlock = (TripTracker) -> Void
+typealias ErrorHandlingCompletionBlock = (TripTracker, Error) -> Void
+
 protocol LocationProvider {
     
     func requestAlwaysAuthIfNeeded()
-    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock)
+    
+    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock, errorCompletion: @escaping ErrorHandlingCompletionBlock)
+    func endTrip(completion: @escaping TripEndedCompletionBlock)
     
     var authStatus: LocationManagerAuthStatus? { get set }
     
     var tripStartedCompletionBlock: TripStartedCompletionBlock? { get set }
     var speedUpdateCompletionBlock: SpeedUpdateCompletionBlock? { get set }
-    
+    var errorHandlingCompletionBlock: ErrorHandlingCompletionBlock? { get set }
+    var error: Error? { get set }
 }
 
 enum LocationManagerAuthStatus {
@@ -46,22 +54,21 @@ enum LocationManagerAuthStatus {
     case authorizedWhenInUse
 }
 
-typealias TripStartedCompletionBlock = (TripTrackingProvider) -> Void
-typealias TripEndedCompletionBlock = (TripTrackingProvider) -> Void
-typealias SpeedUpdateCompletionBlock = (TripTrackingProvider) -> Void
 
 // responsible for requesting authorization & users location
 class LocationManager: NSObject, LocationProvider {
     
     static let shared = LocationManager()
     
+    let tripTracker: TripTracker = TripTracker()
     var authStatus: LocationManagerAuthStatus? {
         didSet {
             self.didRequestAuthorization = true
         }
     }
+    var error: Error?
     
-    private lazy var locationManager: CLLocationManager = {
+    private lazy var coreLocationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         
         locationManager.delegate = self
@@ -74,11 +81,13 @@ class LocationManager: NSObject, LocationProvider {
     var didRequestAuthorization = false
     
     func requestAlwaysAuthIfNeeded() {
-        //get cl auth status
+        // get coreLocation authorization status
         let clauthStatus = CLLocationManager.authorizationStatus()
+        
+        // convert to our LocationManagerAuthStatus
         if clauthStatus == .notDetermined {
             self.authStatus = .notDetermined
-            self.locationManager.requestAlwaysAuthorization()
+            self.coreLocationManager.requestAlwaysAuthorization()
             return
         }
         if clauthStatus == .authorizedWhenInUse {
@@ -95,31 +104,35 @@ class LocationManager: NSObject, LocationProvider {
     
     var tripStartedCompletionBlock: TripStartedCompletionBlock?
     var speedUpdateCompletionBlock: SpeedUpdateCompletionBlock?
+    var errorHandlingCompletionBlock: ErrorHandlingCompletionBlock?
     
-    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock) {
+    // starts location updating, sends back info to update UI using completion handlers
+    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock, errorCompletion: @escaping ErrorHandlingCompletionBlock) {
 
-        locationManager.startUpdatingLocation()
+        coreLocationManager.startUpdatingLocation()
 
         self.tripStartedCompletionBlock = startCompletion
         self.speedUpdateCompletionBlock = speedUpdateCompletion
+        self.errorHandlingCompletionBlock = errorCompletion
 
     }
 
-    func endTrip(completion: @escaping (TripTrackingProvider) -> Void) {
-        locationManager.stopUpdatingLocation()
+    // ends location updating
+    func endTrip(completion: @escaping TripEndedCompletionBlock) {
+        coreLocationManager.stopUpdatingLocation()
 
-        self.tripTracker.points = []
-        self.tripTracker.timeStarted = nil
+        self.tripTracker.clearData()
+        
         completion(self.tripTracker)
     }
     
-    var tripTracker: TripTrackingProvider = TripTracker()
+    
     
 }
 
 extension LocationManager: CLLocationManagerDelegate {
-    // called when location manager gets authorization change
-    // if authorized, location manager should begin location update (depending on whether the setting for automatic trip tracking is on)
+    
+    // if authorized, location manager should begin location update
     // if not authorized, TODO: handle
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
@@ -135,18 +148,18 @@ extension LocationManager: CLLocationManagerDelegate {
 
     // called when location manager fails at retrieving users location
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+        self.error = error
+        self.errorHandlingCompletionBlock?(self.tripTracker, error)
     }
     
     // called each time the location manager gets a location update
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        // TODO: Create coredata object from location updates
-        
         guard let location = locations.first else { return }
+        
         tripTracker.addPoint(location: Location(CLLocation: location))
-        if tripTracker.points.count == 1 {
-            tripTracker.timeStarted = location.timestamp
+        let tripIsJustStarting = self.tripTracker.pointCount == 1
+        
+        if tripIsJustStarting {
             self.tripStartedCompletionBlock?(self.tripTracker)
         }
         
@@ -155,20 +168,3 @@ extension LocationManager: CLLocationManagerDelegate {
     
 }
 
-protocol TripTrackingProvider {
-    var points: [Location] { get set }
-    var timeStarted: Date? { get set }
-    
-    func addPoint(location: Location)
-}
-
-class TripTracker: TripTrackingProvider {
-    
-    var points: [Location] = []
-    var timeStarted: Date? = nil
-    
-    func addPoint(location: Location) {
-        points.insert(location, at: 0)
-    }
-
-}

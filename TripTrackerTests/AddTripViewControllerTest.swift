@@ -8,41 +8,32 @@
 
 import XCTest
 
-class MockTripTracker: TripTrackingProvider {
-    var points: [Location] = []
-    
-    var timeStarted: Date?
-    
-    func addPoint(location: Location) {
-        points.append(Location(latitude: 2.0, longitude: 2.0, timestamp: Date(), speed: 2.0))
+class MockLocationProvider: LocationProvider {
+    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock, errorCompletion: @escaping ErrorHandlingCompletionBlock) {
+        
+        let location = Location(latitude: 2.0, longitude: 2.0, timestamp: Date(), speed: 2.0)
+        trip.addPoint(location: location)
+        
+        startCompletion(self.trip)
+        speedUpdateCompletion(self.trip)
+        
     }
     
+    var errorHandlingCompletionBlock: ErrorHandlingCompletionBlock?
     
-}
-
-class MockLocationProvider: LocationProvider {
+    var error: Error?
+    
     
     var tripStartedCompletionBlock: TripStartedCompletionBlock?
     var speedUpdateCompletionBlock: SpeedUpdateCompletionBlock?
     
     
-    let trip: TripTrackingProvider = MockTripTracker()
+    var trip: TripTracker = TripTracker()
     
-    func requestAlwaysAuthIfNeeded() {
-        // will do
-    }
+    func requestAlwaysAuthIfNeeded() {}
     
-    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock) {
-        
-        
-        //self.tripStartedCompletionBlock = startCompletion
-        //self.speedUpdateCompletionBlock = speedUpdateCompletion
-        
-        let location = Location(latitude: 2.0, longitude: 2.0, timestamp: Date(), speed: 2.0)
-        trip.addPoint(location: location)
-        startCompletion(self.trip)
-        speedUpdateCompletion(self.trip)
-        
+    func endTrip(completion: @escaping TripEndedCompletionBlock) {
+        completion(self.trip)
     }
     
     var authStatus: LocationManagerAuthStatus?
@@ -52,27 +43,41 @@ class MockLocationProvider: LocationProvider {
 
 class AddTripViewControllerTest: XCTestCase {
 
-    var addTripViewController = AddTripViewController()
-    let mockLocationProvider = MockLocationProvider()
+    var addTripViewController: AddTripViewController?
+    var mockLocationProvider: MockLocationProvider?
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        addTripViewController = AddTripViewController()
+        mockLocationProvider = MockLocationProvider()
         
     }
 
     override func tearDownWithError() throws {
-        
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        addTripViewController = nil
+        mockLocationProvider = nil
     }
 
-    func test_startTrip_ShouldSetAValueForTimeStarted() throws {
-        addTripViewController.startTrip(locationManager: mockLocationProvider)
-        assert(addTripViewController.timeStarted != nil)
+    func test_whenAddTripVCIsInitialized_timeStartedIsNil() throws {
+        assert(addTripViewController?.timeStarted == nil)
+    }
+    func test_startTrip_setsAValueForTimeStarted() throws {
+        assert(addTripViewController?.timeStarted == nil)
+        addTripViewController?.startTrip(locationManager: mockLocationProvider!)
+        assert(addTripViewController?.timeStarted != nil)
     }
     
-    func test_startTrip_ShouldSetAValueForCurrentSpeed() throws {
-        addTripViewController.startTrip(locationManager: mockLocationProvider)
-        assert(addTripViewController.currentSpeed != nil)
+    func test_startTrip_setsAValueForCurrentSpeed() throws {
+        assert(addTripViewController?.currentSpeed == nil)
+        addTripViewController?.startTrip(locationManager: mockLocationProvider!)
+        assert(addTripViewController?.currentSpeed != nil)
+    }
+    
+    func test_endTrip_shouldSetCurrentSpeedToNil() throws {
+        addTripViewController?.startTrip(locationManager: mockLocationProvider!)
+        assert(addTripViewController?.currentSpeed != nil)
+        addTripViewController?.endTrip(locationManager: mockLocationProvider!)
+        
+        assert(addTripViewController?.currentSpeed == nil)
     }
 
 }
