@@ -26,6 +26,8 @@
 		BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */; };
 		BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
 		BADD987D25C641C300E9A8FD /* AddTripViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */; };
+		BADD987F25C65F8F00E9A8FD /* TripTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987E25C65F8F00E9A8FD /* TripTracker.swift */; };
+		BADD988025C6612B00E9A8FD /* TripTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987E25C65F8F00E9A8FD /* TripTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripTableViewCell.swift; sourceTree = "<group>"; };
 		BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 		BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewControllerTest.swift; sourceTree = "<group>"; };
+		BADD987E25C65F8F00E9A8FD /* TripTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 				BA0AE09925C4CB1600FBE2EC /* SceneDelegate.swift */,
 				BA0AE09B25C4CB1600FBE2EC /* PastTripsViewController.swift */,
 				BA0AE0B425C5D16B00FBE2EC /* LocationManager.swift */,
+				BADD987E25C65F8F00E9A8FD /* TripTracker.swift */,
 				BA0AE0B025C4CEEA00FBE2EC /* AddTripViewController.swift */,
 				BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */,
 				BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */,
@@ -230,6 +234,7 @@
 				BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */,
 				BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */,
 				BA0AE0B125C4CEEA00FBE2EC /* AddTripViewController.swift in Sources */,
+				BADD987F25C65F8F00E9A8FD /* TripTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +250,7 @@
 				BA0AE0CA25C5EBAD00FBE2EC /* LocationManager.swift in Sources */,
 				BA0AE0C925C5EBA900FBE2EC /* SceneDelegate.swift in Sources */,
 				BA0AE0CC25C5EBB200FBE2EC /* AddTripViewController.swift in Sources */,
+				BADD988025C6612B00E9A8FD /* TripTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

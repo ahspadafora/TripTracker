@@ -22,18 +22,26 @@ class AddTripViewController: UIViewController {
     var tripInProgress = false
     
     var timeStarted: String? {
+        
         didSet {
             DispatchQueue.main.async {
-                // label optional due to AddTripVC testing
-                self.timeStartedLabel?.text = self.timeStarted!
+                guard let timeStarted = self.timeStarted else {
+                    self.timeStartedLabel?.text = ""
+                    return
+                }
+                self.timeStartedLabel?.text = timeStarted
             }
         }
     }
+    
     var currentSpeed: String? {
         didSet {
             DispatchQueue.main.async {
-                // label optional due to AddTripVC testing
-                self.currentSpeedLabel?.text = self.currentSpeed!
+                guard let currentSpeed = self.currentSpeed else {
+                    self.currentSpeedLabel?.text = ""
+                    return
+                }
+                self.currentSpeedLabel?.text = currentSpeed
             }
         }
     }
@@ -43,11 +51,7 @@ class AddTripViewController: UIViewController {
     }
     
     @IBAction func startStopButtonTapped(_ sender: UIButton) {
-        
-        print("tripInProgress is currently \(self.tripInProgress)")
         self.tripInProgress.toggle()
-        print("tripInProgress is currently \(self.tripInProgress)")
-        
         
         DispatchQueue.main.async {
             switch self.tripInProgress {
@@ -62,48 +66,29 @@ class AddTripViewController: UIViewController {
         
     }
     
-    func handleStartCallback(trip: TripTrackingProvider) {
-        self.timeStarted = "\(trip.points.last!.timestamp)"
+    fileprivate func handleStartTripCallback(trip: TripTracker) {
+        self.timeStarted = "\(trip.getLastPoint()!.timestamp)"
+    }
+    fileprivate func handleSpeedCallback(trip: TripTracker) {
+        self.currentSpeed = "\(trip.getFirstPoint()!.speed)"
+    }
+    fileprivate func handleEndTripCallback(trip: TripTracker) {
+        
     }
     
     func startTrip(locationManager: LocationProvider = LocationManager.shared) {
-        
-        locationManager.startTrip(startCompletion: handleStartCallback(trip:)) { (trip) in
-            self.currentSpeed = "\(trip.points.first!.speed)"
-        }
-//        LocationManager.shared.startTrip(startCompletion: { (trip) in
-//            DispatchQueue.main.async {
-//                self.timeStarted = "\(trip.points.last!.timestamp)"
-//            }
-//        }) { (trip) in
-//            DispatchQueue.main.async {
-//                if self.tripInProgress {
-//                    self.currentSpeed = "\(trip.points.first!.speed)"
-//                }
-//            }
-//        }
+        locationManager.startTrip(startCompletion: handleStartTripCallback(trip:), speedUpdateCompletion: handleSpeedCallback(trip:), errorCompletion: { (trip, error) in
+            print(error.localizedDescription)
+            // present notification letting user know they need to check their location settings
+        })
         
     }
     
-    func endTrip(locationManager: LocationProvider) {
-        
-        LocationManager.shared.endTrip { (_) in
-            DispatchQueue.main.async {
-                self.timeStartedLabel.text = " "
-                self.currentSpeedLabel.text = " "
-            }
+    func endTrip(locationManager: LocationProvider = LocationManager.shared) {
+        locationManager.endTrip { (_) in
+           self.timeStarted = nil
+           self.currentSpeed = nil
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

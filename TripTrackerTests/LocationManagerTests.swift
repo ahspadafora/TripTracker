@@ -10,37 +10,35 @@ import XCTest
 
 class LocationManagerTests: XCTestCase {
 
-    var locationManager = LocationManager()
+    var locationManager: LocationManager? = LocationManager()
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        locationManager = LocationManager()
     }
 
     override func tearDownWithError() throws {
-        locationManager = LocationManager()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        locationManager = nil
     }
     
-    func testDidRequestAuthwhenAuthStatusIsNotDetermined() throws {
-        locationManager.authStatus = .notDetermined
-        assert(locationManager.didRequestAuthorization)
-        try tearDownWithError()
+    func test_didRequestAuthIsTrue_whenauthStatusHasAValue() throws {
+        locationManager?.authStatus = .notDetermined
+        assert((locationManager!.didRequestAuthorization))
     }
     
-    func testDidNotRequestAuthWhenAuthStatusIsNil() throws {
+    func test_whenAuthStatusIsNil_didRequestAuthIsFalse() throws {
          
-        assert(locationManager.authStatus == nil && locationManager.didRequestAuthorization == false)
+        assert(locationManager?.authStatus == nil && locationManager?.didRequestAuthorization == false)
     }
     
-    func testStartTrip_startCompletionReturnsTripWithPointsLogged() throws {
-        locationManager.startTrip(startCompletion: { (trip) in
-            assert(trip.points.isEmpty == false)
-        }) {_ in}
+    func test_startTrip_Completion_shouldReturnTripWithPoints() throws {
+        locationManager?.startTrip(startCompletion: { (trip) in
+            assert(trip.tripIsEmpty == false)
+        }, speedUpdateCompletion: { _ in }) {_,_  in}
     }
 
-    func testEndTrip_EndCompletionReturnsTripWithEmptyPointsArray() throws {
-        locationManager.endTrip { (trip) in
-            assert(trip.points.isEmpty)
+    func testEndTrip_EndTrip_shouldReturnTripWithEmptyPoints() throws {
+        locationManager?.endTrip { (trip) in
+            assert(trip.tripIsEmpty)
         }
     }
 
