@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="1828.985507246377" y="126.5625"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root View Controller-->
         <scene sceneID="nDG-LS-s17">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7Sh-Yq-71u" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7Sh-Yq-71u" customClass="RootViewController" customModule="TripTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="802-T0-Ppm">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
