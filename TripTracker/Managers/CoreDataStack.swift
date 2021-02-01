@@ -35,12 +35,6 @@ class CoreDataStack {
         return container
     }()
     
-//    // for Unit Testing
-//    func newDerivedContext() -> NSManagedObjectContext {
-//        let context = storeContainer.newBackgroundContext()
-//        return context
-//    }
-    
     func saveContext(context: NSManagedObjectContext){
         context.perform {
             do {
