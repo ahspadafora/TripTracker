@@ -35,18 +35,13 @@ class CoreDataStack {
         return container
     }()
     
-    // for Unit Testing
-    func newDerivedContext() -> NSManagedObjectContext {
-        let context = storeContainer.newBackgroundContext()
-        return context
-    }
+//    // for Unit Testing
+//    func newDerivedContext() -> NSManagedObjectContext {
+//        let context = storeContainer.newBackgroundContext()
+//        return context
+//    }
     
     func saveContext(context: NSManagedObjectContext){
-        if context != mainContext {
-            saveDerivedContext(context)
-            return
-        }
-        
         context.perform {
             do {
                 try context.save()
@@ -56,15 +51,4 @@ class CoreDataStack {
         }
     }
     
-    public func saveDerivedContext(_ context: NSManagedObjectContext) {
-      context.perform {
-        do {
-          try context.save()
-        } catch let error as NSError {
-          fatalError("Unresolved error \(error), \(error.userInfo)")
-        }
-
-        self.saveContext(context: self.mainContext)
-      }
-    }
 }
