@@ -15,11 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         
-        let launchedPreviously = UserDefaults.standard.bool(forKey: "launchedPreviously")
-        if !launchedPreviously {
-            LocationManager.shared.requestAlwaysAuthIfNeeded()
-            UserDefaults.standard.set(true, forKey: "launchedPreviously")
-        }
+        
         
         return true
     }

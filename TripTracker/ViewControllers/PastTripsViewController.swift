@@ -13,9 +13,7 @@ class PastTripsViewController: UIViewController {
     var locationManager = LocationManager()
     var tripService: TripService?
     
-    
-    
-    // past trips table view datasource & delegate
+    // pastTrips table view datasource & delegate
     let tableViewDelegate = PastTripsTableViewDelegate()
     let tableViewDataSource = PastTripsTableViewDataSource()
     
@@ -45,13 +43,11 @@ class PastTripsTableViewDataSource: NSObject, UITableViewDataSource {
     var trips: [Trip]? = []
     var tripService: TripService? {
         didSet {
-            let tripCount = tripService?.getTrips()
-            print("trip count at setting tripService is = \(tripCount?.count)")
+            _ = tripService?.getTrips()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return tripService?.getTrips()?.count ?? 0
     }
     

@@ -19,7 +19,8 @@ final class TripService: NSObject {
     init(coreDataStack: CoreDataStack,managedObjectContext: NSManagedObjectContext) {
         
         let tripFetchRequest = NSFetchRequest<Trip>(entityName: "Trip")
-        tripFetchRequest.sortDescriptors = []
+        let dateSortDescriptor = NSSortDescriptor(key: "startTimestamp", ascending: true)
+        tripFetchRequest.sortDescriptors = [dateSortDescriptor]
         
         self.managedObjectContext = managedObjectContext
         self.coreDataStack = coreDataStack
@@ -35,16 +36,21 @@ final class TripService: NSObject {
                     let point = Point(context: self.managedObjectContext)
                     point.latitude = pt.latitude
                     point.longitude = pt.longitude
+                    point.timestamp = pt.timestamp
                     points.insert(point)
                 }
         // adds points to trip coredata object
         trip.addToPoints(points as NSSet)
-        
+        trip.startTimestamp = tripTracker.getLastPoint()?.timestamp
+        trip.endTimestamp = tripTracker.getFirstPoint()?.timestamp
         coreDataStack.saveContext(context: managedObjectContext)
         
         
     }
     
+    
+    /// Calls performFetch() on TripService's fetchedResultsController then returns it's fetchedObjects value
+    /// - Returns: an optional array of Trips
     func getTrips() -> [Trip]? {
         do {
             try self.fetchedResultsController?.performFetch()

@@ -14,6 +14,7 @@ typealias TripStartedCompletionBlock = (TripTracker) -> Void
 typealias TripEndedCompletionBlock = (TripTracker) -> Void
 typealias SpeedUpdateCompletionBlock = (TripTracker) -> Void
 typealias ErrorHandlingCompletionBlock = (TripTracker, Error) -> Void
+typealias AuthStatusChangedCompletionBlock = (LocationManagerAuthStatus?) -> Void
 
 enum LocationManagerAuthStatus {
     case notDetermined
@@ -30,11 +31,7 @@ class LocationManager: NSObject {
     static let shared = LocationManager()
     
     let tripTracker: TripTracker = TripTracker()
-    var authStatus: LocationManagerAuthStatus? {
-        didSet {
-            self.didRequestAuthorization = true
-        }
-    }
+    var authStatus: LocationManagerAuthStatus? 
     var error: Error?
     
     private lazy var coreLocationManager: CLLocationManager = {
@@ -47,9 +44,8 @@ class LocationManager: NSObject {
         return locationManager
     }()
     
-    var didRequestAuthorization = false
-    
-    func requestAlwaysAuthIfNeeded() {
+    func requestAlwaysAuthIfNeeded(callback: AuthStatusChangedCompletionBlock) {
+        
         // get coreLocation authorization status
         let clauthStatus = CLLocationManager.authorizationStatus()
         
@@ -57,23 +53,28 @@ class LocationManager: NSObject {
         if clauthStatus == .notDetermined {
             self.authStatus = .notDetermined
             self.coreLocationManager.requestAlwaysAuthorization()
+            callback(self.authStatus)
             return
         }
         if clauthStatus == .authorizedWhenInUse {
             self.authStatus = .authorizedWhenInUse
+            callback(self.authStatus)
             return
         }
         if clauthStatus == .authorizedAlways {
             self.authStatus = .authorizedAlways
+            callback(self.authStatus)
             return
         }
         self.authStatus = .denied
+        callback(self.authStatus)
         
     }
     
     var tripStartedCompletionBlock: TripStartedCompletionBlock?
     var speedUpdateCompletionBlock: SpeedUpdateCompletionBlock?
     var errorHandlingCompletionBlock: ErrorHandlingCompletionBlock?
+    var authStatusChangedCompletionBlock: AuthStatusChangedCompletionBlock?
     
     // starts location updating, sends back info to update UI using completion handlers
     func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock, errorCompletion: @escaping ErrorHandlingCompletionBlock) {
@@ -103,13 +104,18 @@ extension LocationManager: CLLocationManagerDelegate {
     // if not authorized, TODO: handle
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("auth status changed")
+    
         switch status {
         case .authorizedWhenInUse:
             self.authStatus = .authorizedWhenInUse
+            self.authStatusChangedCompletionBlock?(.authorizedWhenInUse)
         case .authorizedAlways:
             self.authStatus = .authorizedAlways
+            self.authStatusChangedCompletionBlock?(.authorizedAlways)
         default:
             self.authStatus = .denied
+            self.authStatusChangedCompletionBlock?(.denied)
+            // TO DO: add callback that updates UI to present notice to user
         }
     }
 

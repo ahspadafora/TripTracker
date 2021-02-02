@@ -52,6 +52,14 @@ class AddTripViewController: UIViewController {
         super.viewDidLoad()
         
         self.tripService = TripService(coreDataStack: self.coreDataStack, managedObjectContext: coreDataStack.mainContext)
+        LocationManager.shared.requestAlwaysAuthIfNeeded(callback: { authStatus in
+            guard let authStatus = authStatus else { fatalError("requestAlwaysAuth should return a non-nil authStatus") }
+            if authStatus == .denied {
+                let alert = UIAlertController(title: "Location settings are turned off", message: "Please update your settings", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: false)
+            }
+        })
     }
     
     @IBAction func startStopButtonTapped(_ sender: UIButton) {

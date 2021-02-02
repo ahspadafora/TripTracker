@@ -10,32 +10,32 @@ import Foundation
 
 class TripTracker {
     
-    private var points: [Location] = []
+    private var locations: [Location] = []
     
     var tripIsEmpty: Bool {
-        return points.isEmpty
+        return locations.isEmpty
     }
     var pointCount: Int {
-        return points.count
+        return locations.count
     }
     
     func addPoint(location: Location) {
-        points.insert(location, at: 0)
+        locations.insert(location, at: 0)
     }
     
     func getLastPoint() -> Location? {
-        return points.last
+        return locations.last
     }
     func getFirstPoint() -> Location? {
-        return points.first
+        return locations.first
     }
     
     func getAllPoints() -> [Location] {
-        return points
+        return locations
     }
     
     func clearData() {
-        self.points = []
+        self.locations = []
     }
 
 }
