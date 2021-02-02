@@ -41,6 +41,8 @@ final class TripService: NSObject {
         trip.addToPoints(points as NSSet)
         
         coreDataStack.saveContext(context: managedObjectContext)
+        
+        
     }
     
     func getTrips() -> [Trip]? {
@@ -56,10 +58,6 @@ final class TripService: NSObject {
     
     func update(){}
     func delete(){}
-    
-//    func fetchedTrips() -> [Trip]? {
-//        return self.fetchedResultsController?.fetchedObjects
-//    }
     
     
 }

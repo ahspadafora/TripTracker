@@ -24,7 +24,6 @@ class AddTripViewController: UIViewController {
     var tripInProgress = false
     
     var timeStarted: String? {
-        
         didSet {
             DispatchQueue.main.async {
                 guard let timeStarted = self.timeStarted else {
@@ -62,7 +61,7 @@ class AddTripViewController: UIViewController {
             switch self.tripInProgress {
             case true:
                 sender.setTitle("End Trip", for: .normal)
-                self.startTrip()
+                self.startTrip(locationManager: LocationManager.shared)
             case false:
                 sender.setTitle("Start Trip", for: .normal)
                 self.endTrip(locationManager: LocationManager.shared)
@@ -71,35 +70,36 @@ class AddTripViewController: UIViewController {
         
     }
     
-    fileprivate func handleStartTripCallback(trip: TripTracker) {
-        self.timeStarted = "\(trip.getLastPoint()!.timestamp)"
+//    fileprivate func startTripCallback(tripTracker: TripTracker) {
+//        self.timeStarted = "\(tripTracker.getLastPoint()!.timestamp)"
+//    }
+    fileprivate func speedCallback(tripTracker: TripTracker) {
+        self.currentSpeed = "\(tripTracker.getFirstPoint()!.speed)"
     }
-    fileprivate func handleSpeedCallback(trip: TripTracker) {
-        self.currentSpeed = "\(trip.getFirstPoint()!.speed)"
-    }
-    fileprivate func handleEndTripCallback(trip: TripTracker) {
-            // TO DO
+    fileprivate func endTripCallback(tripTracker: TripTracker) {
+        self.timeStarted = nil
+        self.currentSpeed = nil
+        if tripTracker.pointCount != 0 {
+            self.tripService?.addTrip(tripTracker: tripTracker)
+            _ = self.tripService?.getTrips()
+        }
+        
     }
     
-    func startTrip(locationManager: LocationProvider = LocationManager.shared) {
+    func startTrip(locationManager: LocationManager = LocationManager.shared) {
         
-        locationManager.startTrip(startCompletion: handleStartTripCallback(trip:), speedUpdateCompletion: handleSpeedCallback(trip:), errorCompletion: { (trip, error) in
+        locationManager.startTrip(startCompletion: { tripTracker in
+            self.timeStarted = "\(tripTracker.getLastPoint()!.timestamp)"
+            
+        }, speedUpdateCompletion: speedCallback(tripTracker:), errorCompletion: { (trip, error) in
             print(error.localizedDescription)
             // present notification letting user know they need to check their location settings
         })
         
     }
     
-    func endTrip(locationManager: LocationProvider = LocationManager.shared) {
-        locationManager.endTrip { (tripTracker) in
-            
-            self.timeStarted = nil
-            self.currentSpeed = nil
-            
-            self.tripService?.addTrip(tripTracker: tripTracker)
-            let newTripCount = self.tripService?.getTrips()
-            print("newTripCount = \(newTripCount)")
-        }
+    func endTrip(locationManager: LocationManager = LocationManager.shared) {
+        locationManager.endTrip(completion: endTripCallback(tripTracker:))
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class PastTripsViewController: UIViewController {
     
-    var locationManager: LocationProvider = LocationManager()
+    var locationManager = LocationManager()
     var tripService: TripService?
     
     
