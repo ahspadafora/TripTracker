@@ -10,41 +10,10 @@ import Foundation
 import CoreLocation
 
 
-struct Location: Equatable {
-    var latitude: Double
-    var longitude: Double
-    var timestamp: Date
-    var speed: Double
-}
-
-extension Location {
-    init(CLLocation: CLLocation) {
-        self.latitude = CLLocation.coordinate.latitude
-        self.longitude = CLLocation.coordinate.longitude
-        self.timestamp = CLLocation.timestamp
-        self.speed = CLLocation.speed
-    }
-}
-
 typealias TripStartedCompletionBlock = (TripTracker) -> Void
 typealias TripEndedCompletionBlock = (TripTracker) -> Void
 typealias SpeedUpdateCompletionBlock = (TripTracker) -> Void
 typealias ErrorHandlingCompletionBlock = (TripTracker, Error) -> Void
-
-protocol LocationProvider {
-    
-    func requestAlwaysAuthIfNeeded()
-    
-    func startTrip(startCompletion: @escaping TripStartedCompletionBlock, speedUpdateCompletion: @escaping SpeedUpdateCompletionBlock, errorCompletion: @escaping ErrorHandlingCompletionBlock)
-    func endTrip(completion: @escaping TripEndedCompletionBlock)
-    
-    var authStatus: LocationManagerAuthStatus? { get set }
-    
-    var tripStartedCompletionBlock: TripStartedCompletionBlock? { get set }
-    var speedUpdateCompletionBlock: SpeedUpdateCompletionBlock? { get set }
-    var errorHandlingCompletionBlock: ErrorHandlingCompletionBlock? { get set }
-    var error: Error? { get set }
-}
 
 enum LocationManagerAuthStatus {
     case notDetermined
@@ -56,7 +25,7 @@ enum LocationManagerAuthStatus {
 
 
 // responsible for requesting authorization & users location
-class LocationManager: NSObject, LocationProvider {
+class LocationManager: NSObject {
     
     static let shared = LocationManager()
     
@@ -130,10 +99,10 @@ class LocationManager: NSObject, LocationProvider {
 
 extension LocationManager: CLLocationManagerDelegate {
     
-    // if authorized, location manager should begin location update
+    
     // if not authorized, TODO: handle
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
+        print("auth status changed")
         switch status {
         case .authorizedWhenInUse:
             self.authStatus = .authorizedWhenInUse
@@ -153,14 +122,16 @@ extension LocationManager: CLLocationManagerDelegate {
     // called each time the location manager gets a location update
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
+        print("location updated")
         
         tripTracker.addPoint(location: Location(CLLocation: location))
         let tripIsJustStarting = self.tripTracker.pointCount == 1
         
         if tripIsJustStarting {
+            // sends a callback to update UI for time started label
             self.tripStartedCompletionBlock?(self.tripTracker)
         }
-        
+        // sends update to UI for current speed label
         self.speedUpdateCompletionBlock?(self.tripTracker)
     }
     

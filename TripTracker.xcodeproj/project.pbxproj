@@ -24,12 +24,15 @@
 		BA170D7725C72C1700619AEB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7625C72C1700619AEB /* CoreDataStack.swift */; };
 		BA170D7925C72DD300619AEB /* TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7825C72DD300619AEB /* TripService.swift */; };
 		BA170D7B25C7388800619AEB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7A25C7388800619AEB /* RootViewController.swift */; };
+		BA170DA125C8CDB400619AEB /* TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7825C72DD300619AEB /* TripService.swift */; };
+		BA170DA225C8CDCC00619AEB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170D7625C72C1700619AEB /* CoreDataStack.swift */; };
+		BA170DA425C8D69A00619AEB /* TripTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170DA325C8D69A00619AEB /* TripTrackerTests.swift */; };
+		BA170DA625C8D6D400619AEB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170DA525C8D6D400619AEB /* Location.swift */; };
+		BA170DA725C9C68200619AEB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA170DA525C8D6D400619AEB /* Location.swift */; };
 		BADD987125C5F09200E9A8FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AE09725C4CB1600FBE2EC /* AppDelegate.swift */; };
 		BADD987625C6105200E9A8FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0AE09D25C4CB1700FBE2EC /* Main.storyboard */; };
 		BADD987825C6128600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
-		BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */; };
 		BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */; };
-		BADD987D25C641C300E9A8FD /* AddTripViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */; };
 		BADD987F25C65F8F00E9A8FD /* TripTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987E25C65F8F00E9A8FD /* TripTracker.swift */; };
 		BADD988025C6612B00E9A8FD /* TripTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD987E25C65F8F00E9A8FD /* TripTracker.swift */; };
 /* End PBXBuildFile section */
@@ -61,9 +64,9 @@
 		BA170D7625C72C1700619AEB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BA170D7825C72DD300619AEB /* TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripService.swift; sourceTree = "<group>"; };
 		BA170D7A25C7388800619AEB /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		BA170DA325C8D69A00619AEB /* TripTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TripTrackerTests.swift; path = TripTrackerTests/TripTrackerTests.swift; sourceTree = SOURCE_ROOT; };
+		BA170DA525C8D6D400619AEB /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BADD987725C6128600E9A8FD /* PastTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripTableViewCell.swift; sourceTree = "<group>"; };
-		BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
-		BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewControllerTest.swift; sourceTree = "<group>"; };
 		BADD987E25C65F8F00E9A8FD /* TripTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,8 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				BA0AE0C225C5E3C800FBE2EC /* Info.plist */,
-				BADD987925C6379E00E9A8FD /* LocationManagerTests.swift */,
-				BADD987C25C641C300E9A8FD /* AddTripViewControllerTest.swift */,
 			);
 			path = TripTrackerTests;
 			sourceTree = "<group>";
@@ -132,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				BADD987E25C65F8F00E9A8FD /* TripTracker.swift */,
+				BA170DA525C8D6D400619AEB /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0AE0A025C4CB1700FBE2EC /* TripTracker.xcdatamodeld */,
+				BA170DA325C8D69A00619AEB /* TripTrackerTests.swift */,
 			);
 			path = CoreDataModel;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				BA0AE09A25C4CB1600FBE2EC /* SceneDelegate.swift in Sources */,
 				BA0AE0A225C4CB1700FBE2EC /* TripTracker.xcdatamodeld in Sources */,
 				BA0AE0B125C4CEEA00FBE2EC /* AddTripViewController.swift in Sources */,
+				BA170DA625C8D6D400619AEB /* Location.swift in Sources */,
 				BADD987F25C65F8F00E9A8FD /* TripTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,15 +307,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BADD987A25C6379E00E9A8FD /* LocationManagerTests.swift in Sources */,
-				BADD987D25C641C300E9A8FD /* AddTripViewControllerTest.swift in Sources */,
+				BA170DA425C8D69A00619AEB /* TripTrackerTests.swift in Sources */,
 				BADD987125C5F09200E9A8FD /* AppDelegate.swift in Sources */,
 				BA0AE0C825C5EB9E00FBE2EC /* PastTripsViewController.swift in Sources */,
+				BA170DA125C8CDB400619AEB /* TripService.swift in Sources */,
 				BADD987B25C6382600E9A8FD /* PastTripTableViewCell.swift in Sources */,
+				BA170DA225C8CDCC00619AEB /* CoreDataStack.swift in Sources */,
 				BA0AE0CA25C5EBAD00FBE2EC /* LocationManager.swift in Sources */,
 				BA0AE0C925C5EBA900FBE2EC /* SceneDelegate.swift in Sources */,
 				BA170D7525C6917100619AEB /* TripTracker.xcdatamodeld in Sources */,
 				BA0AE0CC25C5EBB200FBE2EC /* AddTripViewController.swift in Sources */,
+				BA170DA725C9C68200619AEB /* Location.swift in Sources */,
 				BADD988025C6612B00E9A8FD /* TripTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
